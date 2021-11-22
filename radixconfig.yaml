@@ -1,0 +1,28 @@
+apiVersion: radix.equinor.com/v1
+kind: RadixApplication
+metadata:
+  name: radix-csi-azure-keyvault-example-satr
+spec:
+  environments:
+    - name: dev
+      build:
+        from: main
+  components:
+    - name: frontend
+      src: frontend
+      ports:
+        - name: http
+          port: 8001
+      publicPort: http
+      variables:
+        VAR1: "val1"
+        VAR2: "val2"
+        VAR3: ""
+      runAsNonRoot: true
+      environmentConfig:
+        - environment: dev
+          variables:
+            VAR1: "val1"
+  dnsAppAlias:
+    environment: dev
+    component: frontend

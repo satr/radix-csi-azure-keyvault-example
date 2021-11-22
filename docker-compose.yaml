@@ -1,0 +1,19 @@
+version: "3.5"
+
+networks:
+  radix-csi-azure-keyvault-example:
+    name: radix-csi-azure-keyvault-example
+
+services:
+  frontend:
+    build:
+      context: frontend
+    container_name: radix-csi-azure-keyvault-example-frontend_container
+    networks:
+      - radix-csi-azure-keyvault-example
+    ports:
+      - "8001:8001" # For local debug only; not exposed in prod
+    volumes:
+      - type: bind
+        source: .
+        target: /app
