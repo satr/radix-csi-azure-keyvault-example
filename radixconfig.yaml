@@ -29,13 +29,13 @@ spec:
       secretRefs:
         - azureKeyVaults:
             - name: radix-sci-az-kv-test
-              path: /mnt/222
+              path: /mnt/777
               items:
                 - name: connection-string-dev
                   envVar: CONNECTION_STRING
                   type: secret
-                - name: key2
-                  envVar: KEY_4
+                - name: key1
+                  envVar: KEY_1
                   type: key
 
   dnsAppAlias:
