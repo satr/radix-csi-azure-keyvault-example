@@ -34,6 +34,12 @@ spec:
                 - name: connection-string-2
                   envVar: CONNECTION_STRING
                   type: secret
+                - name: cert22
+                  envVar: cert22.crt
+                  type: secret
+                - name: cert22
+                  envVar: cert22.key
+                  type: key
                 - name: key11
                   envVar: KEY_1
                   type: key
@@ -43,10 +49,10 @@ spec:
                 - name: cert11
                   envVar: CERT_11
                   type: cert
-                - name: cert22
-                  envVar: CERT_22
-                  type: cert
-                  k8sSecretType: tls
+#                - name: cert22
+#                  envVar: CERT_22
+#                  type: cert
+#                  k8sSecretType: tls
 
 
   dnsAppAlias:
