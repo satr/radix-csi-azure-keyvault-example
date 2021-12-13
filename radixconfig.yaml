@@ -35,10 +35,12 @@ spec:
                   envVar: CONNECTION_STRING
                   type: secret
                 - name: cert22
-                  envVar: cert22.crt
+                  envVar: cert22_crt
+                  alias: cert22.crt
                   type: secret
                 - name: cert22
-                  envVar: cert22.key
+                  envVar: cert22_key
+                  alias: cert22.key
                   type: key
                 - name: key11
                   envVar: KEY_1
