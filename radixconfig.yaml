@@ -43,6 +43,11 @@ spec:
                 - name: cert11
                   envVar: CERT_11
                   type: cert
+                - name: cert22
+                  envVar: CERT_22
+                  type: cert
+                  k8sSecretType: tls
+
 
   dnsAppAlias:
     environment: dev
