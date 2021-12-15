@@ -28,26 +28,17 @@ spec:
         - SECRET_B
       secretRefs:
         - azureKeyVaults:
-            - name: radix-sci-az-kv-test2
-              path: /mnt/555
+            - name: radix-sci-az-kv-test
               items:
-                - name: connection-string-2
+                - name: connection-string-dev
                   envVar: CONNECTION_STRING
                   type: secret
-                - name: key11
+                - name: key1
                   envVar: KEY_1
                   type: key
-                - name: key22
+                - name: key2
                   envVar: KEY_2
                   type: key
-                - name: cert11
-                  envVar: CERT_11
-                  type: cert
-                - name: cert22
-                  envVar: CERT_22
-                  type: cert
-#                  k8sSecretType: tls
-
 
   dnsAppAlias:
     environment: dev
