@@ -34,7 +34,7 @@ spec:
                 envVar: CONNECTION_STRING
                 type: secret
               - name: key1
-                envVar: KEY_1
+                envVar: KEY_11
                 type: key
               - name: key2
                 envVar: KEY_2
