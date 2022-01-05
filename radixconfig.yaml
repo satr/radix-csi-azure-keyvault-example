@@ -23,6 +23,19 @@ spec:
         - environment: dev
           variables:
             VAR1: "val1"
+          secretRefs:
+            azureKeyVaults:
+              - name: radix-sci-az-kv-test
+                items:
+                  - name: connection-string-dev
+                    envVar: CONNECTION_STRING2
+                    type: secret
+                  - name: key1
+                    envVar: KEY_1
+                    type: key
+                  - name: key2
+                    envVar: KEY_22
+                    type: key
       secrets:
         - SECRET_A
         - SECRET_B
