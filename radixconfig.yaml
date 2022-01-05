@@ -7,6 +7,9 @@ spec:
     - name: dev
       build:
         from: main
+    - name: prod
+      build:
+        from: release
   components:
     - name: frontend
       src: frontend
@@ -34,6 +37,22 @@ spec:
                     envVar: KEY_1
                     type: key
                   - name: key2
+                    envVar: KEY_22
+                    type: key
+        - environment: dev
+          variables:
+            VAR1: "val1"
+          secretRefs:
+            azureKeyVaults:
+              - name: radix-sci-az-kv-test2
+                items:
+                  - name: connection-string-2
+                    envVar: CONNECTION_STRING_2
+                    type: secret
+                  - name: key11
+                    envVar: KEY_11
+                    type: key
+                  - name: key22
                     envVar: KEY_22
                     type: key
       secrets:
