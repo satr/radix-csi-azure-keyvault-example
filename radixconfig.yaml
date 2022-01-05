@@ -39,7 +39,7 @@ spec:
                   - name: key2
                     envVar: KEY_22
                     type: key
-        - environment: dev
+        - environment: prod
           variables:
             VAR1: "val1"
           secretRefs:
