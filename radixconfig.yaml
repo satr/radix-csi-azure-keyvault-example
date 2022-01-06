@@ -33,6 +33,9 @@ spec:
                   - name: connection-string-dev
                     envVar: CONNECTION_STRING2
                     type: secret
+                  - name: secret1
+                    envVar: CONNECTION_STRING
+                    type: secret
                   - name: key1
                     envVar: KEY_1
                     type: key
@@ -68,9 +71,9 @@ spec:
               - name: key1
                 envVar: KEY_11
                 type: key
-              - name: key2
-                envVar: KEY_2
-                type: key
+#              - name: key2
+#                envVar: KEY_2
+#                type: key
 
   dnsAppAlias:
     environment: dev
