@@ -56,12 +56,14 @@ spec:
                   - name: key11
                     envVar: KEY_11
                     type: key
-                  - name: key1
-                    envVar: KEY_11
-                    type: key
                   - name: key22
                     envVar: KEY_22
                     type: key
+              - name: radix-sci-az-kv-test2
+                items:
+                  - name: connection-string-2
+                    envVar: CONNECTION_STRING_22
+                    type: secret
       secrets:
         - SECRET_A
         - SECRET_B
