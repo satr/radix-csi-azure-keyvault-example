@@ -59,9 +59,6 @@ spec:
                   - name: key22
                     envVar: KEY_22
                     type: key
-                  - name: key22
-                    envVar: VAR1
-                    type: key
       secrets:
         - SECRET_A
         - SECRET_B
