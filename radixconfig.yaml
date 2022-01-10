@@ -68,16 +68,16 @@ spec:
         - SECRET_A
         - SECRET_B
       secretRefs:
-        azureKeyVaults:
-          - name: radix-sci-az-kv-test
-            path: /mnt/1
-            items:
-              - name: connection-string-dev
-                envVar: CONNECTION_STRING
-                type: secret
-              - name: key1
-                envVar: KEY_11
-                type: key
+#        azureKeyVaults:
+#          - name: radix-sci-az-kv-test
+#            path: /mnt/1
+#            items:
+#              - name: connection-string-dev
+#                envVar: CONNECTION_STRING
+#                type: secret
+#              - name: key1
+#                envVar: KEY_11
+#                type: key
 
   dnsAppAlias:
     environment: dev
