@@ -50,7 +50,7 @@ spec:
             azureKeyVaults:
               - name: radix-sci-az-kv-test
                 items:
-                  - name: connection-string-1
+                  - name: connection-string-prod
                     envVar: CONNECTION_STRING_1
                     type: secret
               - name: radix-sci-az-kv-test2
