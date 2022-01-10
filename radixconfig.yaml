@@ -68,6 +68,7 @@ spec:
       secretRefs:
         azureKeyVaults:
           - name: radix-sci-az-kv-test
+            path: /mnt/1
             items:
               - name: connection-string-dev
                 envVar: CONNECTION_STRING
