@@ -49,11 +49,13 @@ spec:
           secretRefs:
             azureKeyVaults:
               - name: radix-sci-az-kv-test
+                path: /mnt/11
                 items:
                   - name: connection-string-prod
                     envVar: CONNECTION_STRING_1
                     type: secret
               - name: radix-sci-az-kv-test2
+                path: /mnt/11
                 items:
                   - name: connection-string-2
                     envVar: CONNECTION_STRING_2
