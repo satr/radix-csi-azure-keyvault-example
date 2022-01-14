@@ -27,28 +27,34 @@ spec:
       secretRefs:
         azureKeyVaults:                    #Azure Key vault configuration, common for the component
           - name: radix-app-secrets
-            path: /mnt/common                 #overrides default "path", where secrets, keys and certificates are mapped as files
+            path: /mnt/secrets                #overrides default "path", where secrets, keys and certificates are mapped as files
             items:
-              - name: connection-string-prod  #example value "server:prod" in Azure Key vault "radix-app-secrets-1"
+              - name: connection-string-prod  #example value "server:prod" in Azure Key vault "radix-app-secrets"
                 envVar: CONNECTION-STRING     #default environment variable CONNECTION-STRING
+              - name: db-user                 #example value "readeruser" in Azure Key vault "radix-app-secrets"
+                envVar: DB_USER               #default environment variable DB_USER
+              - name: db-password             #example value "Pa$$w0rd!" in Azure Key vault "radix-app-secrets"
+                envVar: DB_PASS               #default environment variable DB_PASS
       environmentConfig:
         - environment: dev
           secretRefs:
             azureKeyVaults:                #Azure Key vault configuration, customized in environment "dev"
               - name: radix-app-secrets
-                path: /mnt/dev                #overrides common configuration "path" in "dev" environment
+                path: /mnt/dev                   #overrides common configuration "path" in "dev" environment
                 items:
-                  - name: connection-string-test #example value "server:dev" in Azure Key vault "radix-app-secrets-1"
+                  - name: connection-string-test #example value "server:dev" in Azure Key vault "radix-app-secrets"
                     envVar: CONNECTION-STRING    #overrides Azure Key vault "radix-app-secrets-1" secret name for environment variable CONNECTION-STRING
         - environment: qa
           secretRefs:
             azureKeyVaults:                #Azure Key vault configuration, customized in environment "qa"
-              - name: radix-app-secrets-2       #overrides common configuration Azure Key vault name in "qa" environment
-                items:                          #"qa" environment uses the same "path" as in common configuration
-                  - name: connection-string-test #example value "server:qa" in Azure Key vault "radix-app-secrets-1"
+              - name: radix-app-secrets-2        #overrides common configuration Azure Key vault name in "qa" environment
+                items:                           #"qa" environment uses the same "path" as in common configuration
+                  - name: connection-string-test #example value "server:qa" in Azure Key vault "radix-app-secrets-2"
                     envVar: CONNECTION-STRING    #overrides Azure Key vault secret name for environment variable CONNECTION-STRING
-                  - name: db-password-qa
-                    envVar: DB_PASS             #new environment variable, existing only in environment "qa"
+                  - name: db-password            #example value "$ecretPa$$!" in Azure Key vault "radix-app-secrets-2"
+                    envVar: DB_PASS              #overrides Azure Key vault secret name for environment variable DB_PASS
+                  - name: db-qa-user             #example value "writeruser" in Azure Key vault "radix-app-secrets-2"
+                    envVar: DB_QA_USER           #new environment variable, existing only in environment "qa"
         - environment: prod                #Azure Key vault configuration is not customized in environment "prod"
             variables:
               VAR1: "val2"
