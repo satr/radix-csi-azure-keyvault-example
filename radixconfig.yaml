@@ -7,6 +7,9 @@ spec:
     - name: dev
       build:
         from: main
+    - name: qa
+      build:
+        from: main
     - name: prod
       build:
         from: release
@@ -15,77 +18,40 @@ spec:
       src: frontend
       ports:
         - name: http
-          port: 8001
-      publicPort: http
-    - name: backend
-      src: backend
-      ports:
-        - name: http
           port: 8080
       publicPort: http
       variables:
         VAR1: "val1"
-        VAR2: "val2"
-        VAR3: ""
-      runAsNonRoot: true
+      secrets:
+        - SECRET1
+      secretRefs:
+        azureKeyVaults:                    #Azure Key vault configuration, common for the component
+          - name: radix-app-secrets
+            path: /mnt/common                 #overrides default "path", where secrets, keys and certificates are mapped as files
+            items:
+              - name: connection-string-prod  #example value "server:prod" in Azure Key vault "radix-app-secrets-1"
+                envVar: CONNECTION-STRING     #default environment variable CONNECTION-STRING
       environmentConfig:
         - environment: dev
-          variables:
-            VAR1: "val1"
           secretRefs:
-            azureKeyVaults:
-              - name: radix-sci-az-kv-test
-                path: "/mnt/my-folder"
+            azureKeyVaults:                #Azure Key vault configuration, customized in environment "dev"
+              - name: radix-app-secrets
+                path: /mnt/dev                #overrides common configuration "path" in "dev" environment
                 items:
-                  - name: connection-string-dev
-                    envVar: CONNECTION_STRING2
-                    type: secret
-                  - name: secret1
-                    envVar: CONNECTION_STRING
-                    type: secret
-                  - name: key1
-                    envVar: KEY_1
-                    type: key
-                  - name: key2
-                    envVar: KEY_22
-                    type: key
-        - environment: prod
-          variables:
-            VAR1: "val1"
+                  - name: connection-string-test #example value "server:dev" in Azure Key vault "radix-app-secrets-1"
+                    envVar: CONNECTION-STRING    #overrides Azure Key vault "radix-app-secrets-1" secret name for environment variable CONNECTION-STRING
+        - environment: qa
           secretRefs:
-            azureKeyVaults:
-              - name: radix-sci-az-kv-test
-                path: /mnt/11
-                items:
-                  - name: connection-string-prod
-                    envVar: CONNECTION_STRING_1
-                    type: secret
-              - name: radix-sci-az-kv-test2
-                items:
-                  - name: connection-string-2
-                    envVar: CONNECTION_STRING_2
-                    type: secret
-                  - name: key11
-                    envVar: KEY_11
-                    type: key
-                  - name: key22
-                    envVar: KEY_22
-                    type: key
-      secrets:
-        - SECRET_A
-        - SECRET_B
-      secretRefs:
-        azureKeyVaults:
-          - name: radix-sci-az-kv-test
-            path: /mnt/1
-            items:
-              - name: connection-string-dev
-                envVar: CONNECTION_STRING
-                type: secret
-              - name: key1
-                envVar: KEY_11
-                type: key
-
+            azureKeyVaults:                #Azure Key vault configuration, customized in environment "qa"
+              - name: radix-app-secrets-2       #overrides common configuration Azure Key vault name in "qa" environment
+                items:                          #"qa" environment uses the same "path" as in common configuration
+                  - name: connection-string-test #example value "server:qa" in Azure Key vault "radix-app-secrets-1"
+                    envVar: CONNECTION-STRING    #overrides Azure Key vault secret name for environment variable CONNECTION-STRING
+                  - name: db-password-qa
+                    envVar: DB_PASS             #new environment variable, existing only in environment "qa"
+        - environment: prod                #Azure Key vault configuration is not customized in environment "prod"
+            variables:
+              VAR1: "val2"
   dnsAppAlias:
-    environment: dev
-    component: frontend
+      environment: dev
+      component: frontend
