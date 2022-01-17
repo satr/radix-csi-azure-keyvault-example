@@ -7,11 +7,15 @@ import (
 	"os"
 )
 
+var envVars = map[string]bool{"CONNECTION-STRING": true, "DB_USER": true, "DB_PASS": true, "DB_QA_USER": true}
+
 func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "<h1>All env-vars</h1>")
+	fmt.Fprintf(w, "<h1>Azure Key vault env-vars</h1>")
 	fmt.Fprintf(w, "<ul>")
 	for _, envVar := range os.Environ() {
-		fmt.Fprintf(w, "<li>%s</li>", envVar)
+		if _, ok := envVars[envVar]; ok {
+			fmt.Fprintf(w, "<li>%s</li>", envVar)
+		}
 	}
 	fmt.Fprintf(w, "</ul>")
 }

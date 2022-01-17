@@ -48,7 +48,6 @@ spec:
           secretRefs:
             azureKeyVaults:                #Azure Key vault configuration, customized in environment "qa"
               - name: radix-app-secrets-2        #overrides common configuration Azure Key vault name in "qa" environment
-                path: /mnt/secrets
                 items:                           #"qa" environment uses the same "path" as in common configuration
                   - name: connection-string-test #example value "server:qa" in Azure Key vault "radix-app-secrets-2"
                     envVar: CONNECTION-STRING    #overrides Azure Key vault secret name for environment variable CONNECTION-STRING
