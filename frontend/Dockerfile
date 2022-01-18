@@ -18,5 +18,5 @@ RUN addgroup -S -g 1700 radix-job-example
 RUN adduser -S -u 1000 -G radix-job-example radix-job-example
 
 USER 1000
-EXPOSE 8080
+EXPOSE 8082
 ENTRYPOINT ["/usr/local/bin/frontend"]
