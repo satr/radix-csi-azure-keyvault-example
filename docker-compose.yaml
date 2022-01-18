@@ -12,7 +12,9 @@ services:
     networks:
       - radix-csi-azure-keyvault-example
     ports:
-      - "8080:8080" # For local debug only; not exposed in prod
+      - "8082:8082" # For local debug only; not exposed in prod
+    environment:
+      - CONNECTION_STRING=1
     volumes:
       - type: bind
         source: .

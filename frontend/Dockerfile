@@ -1,10 +1,5 @@
-FROM golang:alpine3.15 as builder
+FROM golang:1.17.6-alpine3.15 as builder
 
-ARG BRANCH
-ARG TARGET_ENVIRONMENTS
-ENV TARGET_ENVIRONMENTS TARGET_ENVIRONMENTS
-RUN echo "********** BRANCH: $BRANCH"
-RUN echo "********** TARGET_ENVIRONMENTS: $TARGET_ENVIRONMENTS"
 RUN apk update && \
     apk add ca-certificates curl git  && \
     apk add --no-cache gcc musl-dev && \
