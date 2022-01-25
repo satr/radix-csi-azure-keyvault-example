@@ -2,6 +2,7 @@ apiVersion: radix.equinor.com/v1
 kind: RadixApplication
 metadata:
   name: radix-csi-azure-keyvault-example-satr
+spec:
   environments:
     - name: dev
       build:
