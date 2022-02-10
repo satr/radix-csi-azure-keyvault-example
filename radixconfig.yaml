@@ -54,7 +54,7 @@ spec:
                   - name: db-password            #example value "$ecretPa$$!" in Azure Key vault "radix-app-secrets-2"
                     envVar: DB_PASS              #overrides Azure Key vault secret name for environment variable DB_PASS
                   - name: db-qa-user             #example value "writeruser" in Azure Key vault "radix-app-secrets-2"
-                    envVar: DB_QA_USER           #new environment variable, existing only in environment "qa"
+                    envVar: ""           #new environment variable, existing only in environment "qa"
         - environment: prod                #Azure Key vault configuration is not customized in environment "prod"
           variables:
             VAR1: "val2"
