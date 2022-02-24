@@ -29,6 +29,9 @@ spec:
           - name: radix-app-secrets
             path: /mnt/secrets                   #overrides default "path", where secrets, keys and certificates are available as files
             items:
+              - name: az-cert-radix
+                type: cert
+                envVar: AZ_CERT_RADIX
               - name: connection-string-prod     #example value "server:prod" in Azure Key vault "radix-app-secrets"
                 envVar: CONNECTION_STRING        #default environment variable CONNECTION_STRING
               - name: db-user                    #example value "readeruser" in Azure Key vault "radix-app-secrets"
