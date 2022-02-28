@@ -37,6 +37,9 @@ spec:
               - name: cert1
                 type: cert
                 alias: "cert1.crt"
+              - name: cert2
+                type: cert
+                alias: "cert1.crt"
               - name: cert1
                 type: secret
                 alias: "cert1.secret"
