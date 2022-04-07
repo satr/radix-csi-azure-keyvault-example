@@ -23,7 +23,7 @@ spec:
       variables:
         VAR1: "val1"
       secrets:
-        - SECRET1
+        - SECRET2
       secretRefs:
         azureKeyVaults:
           - name: RADIX-APP-SECRETS-3
