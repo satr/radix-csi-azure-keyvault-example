@@ -1,15 +1,13 @@
 FROM golang:1.18.3-alpine3.16 as builder
 
-RUN apk update && \
-    apk add ca-certificates curl git  && \
+WORKDIR /app
+COPY ./app /app
+RUN apk update && apk upgrade
+RUN apk add ca-certificates curl git  && \
     apk add --no-cache gcc musl-dev && \
     go get -u golang.org/x/lint/golint github.com/frapposelli/wwhrd
 
-WORKDIR ..
-
 # Install project dependencies
-COPY ./app ./app
-WORKDIR ./app
 RUN go mod download
 
 # Build
