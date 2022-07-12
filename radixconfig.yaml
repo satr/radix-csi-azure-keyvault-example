@@ -3,6 +3,9 @@ kind: RadixApplication
 metadata:
   name: radix-csi-azure-keyvault-example-satr
 spec:
+  build:
+    secrets:
+      - DB_PASS
   environments:
     - name: dev
       build:
@@ -58,6 +61,10 @@ spec:
         - environment: prod                #Azure Key vault configuration is not customized in environment "prod"
           variables:
             VAR1: "val2"
+  privateImageHubs:
+    privaterepodeleteme.azurecr.io:
+      username: 23452345-3d71-44a7-8476-50e8b281abbc
+      email: radix@statoilsrm.onmicrosoft.com
   dnsAppAlias:
       environment: dev
       component: frontend
