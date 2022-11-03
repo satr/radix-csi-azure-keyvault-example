@@ -10,4 +10,4 @@ To run locally run the command
 ```
 docker-compose up --build
 ```
-and open a URL [http://localhost:8082](http://localhost:8082) in a browser. 
+and open a URL [http://localhost:8082](http://localhost:8082) in a browser.  
