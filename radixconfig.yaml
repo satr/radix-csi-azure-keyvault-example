@@ -4,6 +4,8 @@ metadata:
   name: radix-csi-azure-keyvault-example-satr
 spec:
   build:
+    useBuildKit: true
+    useBuildCache: true
     secrets:
       - DB_PASS
   environments:
