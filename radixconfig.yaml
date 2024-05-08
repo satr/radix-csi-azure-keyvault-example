@@ -18,6 +18,7 @@ spec:
         from: release
   components:
     - name: frontend
+      readOnlyFileSystem: true
       src: frontend
       ports:
         - name: http
@@ -62,6 +63,7 @@ spec:
           variables:
             VAR1: "val2"
     - name: frontend2
+      readOnlyFileSystem: true
       src: frontend
       ports:
         - name: http
