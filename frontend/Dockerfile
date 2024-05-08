@@ -3,9 +3,8 @@ FROM golang:1.22.3-alpine3.19 as builder
 WORKDIR /app
 COPY ./app /app
 RUN apk update && apk upgrade
-RUN apk add ca-certificates curl git  && \
-    apk add --no-cache gcc musl-dev && \
-    go get -u golang.org/x/lint/golint github.com/frapposelli/wwhrd
+RUN apk add ca-certificates curl git
+RUN apk add --no-cache gcc musl-dev
 
 # Install project dependencies
 RUN go mod download
